@@ -18,7 +18,7 @@ function isActive(href: string) {
   <div class="nav-inner">
     <a href="/" class="nav-logo">
       <span class="nav-logo-dot"></span>
-      <span class="nav-logo-name">IapetusYuan</span>
+      <span class="nav-logo-name glow">IapetusYuan</span>
     </a>
 
     <div class="nav-links">
@@ -77,6 +77,7 @@ function isActive(href: string) {
 }
 
 .nav-logo-name { color: var(--text); }
+.nav-logo-name.glow { animation: aiSoftGlow 4.8s ease-in-out infinite; }
 
 .nav-links {
   display: flex;
