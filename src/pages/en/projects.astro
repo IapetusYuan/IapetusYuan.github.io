@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    name: 'Ericsson EIAP O-RAN rApp',
+    desc: 'End-to-end CSAR packaging + no-sudo offline deployment, BDR auth chain (OAuth2 → STS WebIdentity → AWS SigV4) for CM/PM data access.',
+    tags: ['Python', 'O-RAN', 'K8s', 'OAuth2'],
+    mediaType: 'IMG',
+    status: 'Internal',
+    company: 'Groundhog Technologies',
+  },
+  {
+    name: 'AI KPI Anomaly Detection Agent',
+    desc: 'FastAPI + local LLM (Gemma) + ClickHouse stack for the network-optimization team; root-caused routing instability to token skew.',
+    tags: ['FastAPI', 'LLM', 'ClickHouse', 'Python'],
+    mediaType: 'GIF',
+    status: 'Production',
+    company: 'Groundhog Technologies',
+  },
+  {
+    name: 'ClickHouse Distributed Query Fix',
+    desc: 'Traced a 637 GB RSS blow-up, rewrote distributed subqueries (IN → GLOBAL IN), restoring 20,238-row ingestion pipeline.',
+    tags: ['ClickHouse', 'SQL', 'Python', 'Debug'],
+    mediaType: 'IMG',
+    status: 'Internal',
+    company: 'Groundhog Technologies',
+  },
+  {
+    name: 'Weakly Supervised Gynecological Cancer WSI',
+    desc: 'M.S. thesis: MSI-status prediction from H&E whole-slide images using modified CLAM, Shuffle Attention, Modified-FCN, VarMIL.',
+    tags: ['PyTorch', 'TensorFlow', 'Deep Learning', 'ResNet'],
+    mediaType: 'IMG',
+    status: 'Research',
+    company: 'NTUST',
+  },
+  {
+    name: 'Face Recognition Roll-Call System',
+    desc: 'B.S. capstone: trained on Google Colab, deployed to Raspberry Pi, integrated into a self-built web app.',
+    tags: ['Deep Learning', 'Raspberry Pi', 'Python', 'Web'],
+    mediaType: 'IMG',
+    status: 'Capstone',
+    company: 'MCUT',
+  },
+  {
+    name: 'Voronoi/Delaunay Java → Python Migration',
+    desc: 'Migrated neighbor algorithms from JVM services to Python with validated output parity; containerized on Kubernetes.',
+    tags: ['Python', 'Java', 'Kubernetes', 'Docker'],
+    mediaType: 'IMG',
+    status: 'Internal',
+    company: 'Groundhog Technologies',
+  },
+];
+---
+
+<BaseLayout title="Projects" description="Engineering practice, AI research, and system building.">
+  <div class="container">
+
+    <header class="page-header fade-in-up">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-sub">Engineering Practice · AI Research · System Building</p>
+      <p class="page-note">
+        Most projects are internal systems, shown via screenshots or GIFs.
+        <span class="mono muted">// Images coming soon</span>
+      </p>
+    </header>
+
+    <div class="projects-grid">
+      {projects.map((p, i) => (
+        <div class={`project-card fade-in-up fade-in-up-${Math.min(i + 1, 4)}`}>
+          <div class="project-media">
+            <span class="media-placeholder">{p.name}</span>
+            <span class="media-badge">{p.mediaType}</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-company">{p.company}</span>
+              <span class="project-status">{p.status}</span>
+            </div>
+            <h2 class="project-name">{p.name}</h2>
+            <p class="project-desc">{p.desc}</p>
+            <div class="project-tags">
+              {p.tags.map(tag => <span class="ptag">{tag}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+.container { max-width: 940px; margin: 0 auto; padding: 60px 24px 100px; }
+.page-header { margin-bottom: 40px; }
+.page-title { font-size: clamp(26px, 5vw, 34px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 6px; }
+.page-sub { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+.page-note { font-size: 12px; color: var(--muted); }
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.3s; }
+.project-card:hover { border-color: oklch(0.38 0.09 var(--hue)); transform: translateY(-4px); box-shadow: 0 16px 40px oklch(0.70 0.18 var(--hue) / 0.10); }
+.project-media { height: 160px; background: oklch(0.11 0.012 var(--hue)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.media-placeholder { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.5px; text-align: center; padding: 0 16px; opacity: 0.5; }
+.media-badge { position: absolute; top: 10px; right: 10px; background: var(--accent); color: #000; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; font-family: var(--font-mono); }
+.project-body { padding: 16px 18px; }
+.project-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.project-company { font-family: var(--font-mono); font-size: 10px; color: var(--accent); letter-spacing: 1px; }
+.project-status { font-size: 10px; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; border-radius: 10px; font-family: var(--font-mono); }
+.project-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em; }
+.project-desc { font-size: 12px; color: var(--muted); line-height: 1.65; margin-bottom: 12px; }
+.project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.ptag { font-size: 10px; color: var(--muted); background: oklch(0.19 0.015 var(--hue)); padding: 2px 8px; border-radius: 10px; font-family: var(--font-mono); }
+@media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
+</style>

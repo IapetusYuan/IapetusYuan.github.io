@@ -1,22 +1,30 @@
 ---
+import { getLangFromUrl, getAlternatePath } from '../i18n/utils';
+import { t } from '../i18n/translations';
+
+const lang = getLangFromUrl(Astro.url);
+const tr = t(lang);
 const currentPath = Astro.url.pathname;
+const alternatePath = getAlternatePath(Astro.url);
+
+const prefix = lang === 'en' ? '/en' : '';
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/about', label: 'About' },
+  { href: `${prefix}/`, label: tr.nav.home },
+  { href: `${prefix}/blog`, label: tr.nav.blog },
+  { href: `${prefix}/projects`, label: tr.nav.projects },
+  { href: `${prefix}/about`, label: tr.nav.about },
 ];
 
 function isActive(href: string) {
-  if (href === '/') return currentPath === '/';
+  if (href === `${prefix}/` || href === '/en') return currentPath === href || currentPath === '/en/';
   return currentPath.startsWith(href);
 }
 ---
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
+    <a href={`${prefix}/`} class="nav-logo">
       <span class="nav-logo-dot"></span>
       <span class="nav-logo-name glow">IapetusYuan</span>
     </a>
@@ -30,6 +38,9 @@ function isActive(href: string) {
           {link.label}
         </a>
       ))}
+      <a href={alternatePath} class="lang-toggle" title="Switch language">
+        {tr.nav.langToggle}
+      </a>
     </div>
   </div>
 </nav>
@@ -104,8 +115,25 @@ function isActive(href: string) {
   background: var(--accent-bg);
 }
 
+.lang-toggle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin-left: 6px;
+  transition: all 0.15s;
+}
+.lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 @media (max-width: 480px) {
   .nav-logo-name { display: none; }
-  .nav-link { padding: 6px 10px; font-size: 11px; }
+  .nav-link { padding: 6px 8px; font-size: 11px; }
+  .lang-toggle { margin-left: 2px; padding: 4px 8px; }
 }
 </style>
