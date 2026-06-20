@@ -1,6 +1,6 @@
 # IapetusYuan.github.io 進度記錄
 
-## 狀態：v1.0.0 已推送，等待 GitHub Actions 部署
+## 狀態：v1.1.0 已推送，GitHub Actions 部署中
 
 ---
 
@@ -38,15 +38,19 @@
 
 ## 待完成
 
-### Phase 4 — 動畫精修（未開始）
-- aiShimmerLoop、aiSoftGlow（參考 innei.in）
-- tocPulse、fadeInOut（參考 blog.yuuzi.cc）
-- 文章 TOC 側欄 + 滾動高亮
+### Phase 4 — 動畫精修 ✅
+- TOC 元件：sticky 側欄、捲動進度條、active section 高亮（tocPulse）
+- BlogLayout：雙欄佈局，heading 從 [slug].astro 傳入
+- scroll-triggered reveal：IntersectionObserver 在 BaseLayout 啟動 .reveal 元素
+- aiSoftGlow：Nav logo 脈衝光暈動畫（4.8s）
+- aiShimmerLoop：global.css 定義，hero shimmer 文字使用
+- pulsate：更新為 box-shadow 版本（innei.in 風格）
 
-### Phase 5 — i18n（未開始）
-- 中/英切換按鈕
-- /en/ 路由前綴
-- 翻譯檔
+### Phase 5 — i18n ✅
+- Nav：語言切換按鈕，自動從 URL 偵測語言，連結至對應版本
+- i18n/translations.ts：所有 UI 字串 zh/en
+- i18n/utils.ts：getLangFromUrl、getAlternatePath
+- 英文頁面：/en/（首頁）、/en/blog、/en/blog/[slug]、/en/projects、/en/about
 
 ---
 
@@ -59,5 +63,5 @@
 
 ## Git 狀態
 
-- main：v1.0.0
-- 已合併分支：feature/design-system, feature/homepage, feature/content-pages
+- main：v1.1.0
+- 已合併分支：feature/design-system, feature/homepage, feature/content-pages, feature/animations, feature/i18n
