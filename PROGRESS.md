@@ -57,7 +57,7 @@
 ## 用戶待辦
 
 1. **GitHub Pages 設定**：repo → Settings → Pages → Source 設為「GitHub Actions」
-2. **上傳頭像**：放到 `public/avatar.jpg`（否則顯示 "BY" 文字 fallback）
+2. **上傳頭像**：放到 `public/avatar.png`（否則顯示 "BY" 文字 fallback）
 3. **等待部署**：Actions 約 2-3 分鐘完成
 4. **新增文章**：在 `src/content/blog/` 新增 `.md` 檔即可
 
