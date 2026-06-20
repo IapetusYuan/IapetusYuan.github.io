@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const byYear: Record<string, typeof allPosts> = {};
+for (const post of allPosts) {
+  const year = post.data.date.slice(0, 4);
+  if (!byYear[year]) byYear[year] = [];
+  byYear[year].push(post);
+}
+const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
+const allTags = [...new Set(allPosts.flatMap(p => p.data.tags))].sort();
+---
+
+<BaseLayout title="Blog" description="Technical Notes · Paper Reading · Tool Tips · Thoughts">
+  <div class="container">
+
+    <header class="page-header fade-in-up">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-sub">Technical Notes · Paper Reading · Tool Tips · Thoughts</p>
+    </header>
+
+    <div class="tag-filters fade-in-up fade-in-up-2" id="tag-filters">
+      <button class="filter-tag active" data-tag="all">All</button>
+      {allTags.map(tag => (
+        <button class="filter-tag" data-tag={tag}>{tag}</button>
+      ))}
+    </div>
+
+    <div id="posts-container">
+      {years.map(year => (
+        <div class="year-group" data-year={year}>
+          <div class="year-label">{year}</div>
+          {byYear[year].map(post => (
+            <a
+              href={`/en/blog/${post.slug}`}
+              class="post-row"
+              data-tags={post.data.tags.join(',')}
+            >
+              <div class="post-info">
+                <div class="post-title">{post.data.title}</div>
+                <div class="post-meta">
+                  {post.data.tags[0] && <span>{post.data.tags[0]}</span>}
+                  <span>·</span>
+                  <span>{post.data.date.slice(5)}</span>
+                </div>
+              </div>
+              {post.data.tags[1] && (
+                <span class="post-badge">{post.data.tags[1]}</span>
+              )}
+            </a>
+          ))}
+        </div>
+      ))}
+
+      {allPosts.length === 0 && (
+        <div class="empty-state">
+          <p class="mono muted">// Posts coming soon</p>
+        </div>
+      )}
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+const filters = document.getElementById('tag-filters');
+const rows = document.querySelectorAll<HTMLElement>('.post-row');
+const yearGroups = document.querySelectorAll<HTMLElement>('.year-group');
+
+filters?.addEventListener('click', (e) => {
+  const btn = (e.target as HTMLElement).closest('.filter-tag') as HTMLElement | null;
+  if (!btn) return;
+  document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const tag = btn.dataset.tag ?? 'all';
+  rows.forEach(row => {
+    const tags = row.dataset.tags ?? '';
+    row.style.display = (tag === 'all' || tags.split(',').includes(tag)) ? '' : 'none';
+  });
+  yearGroups.forEach(group => {
+    const visible = [...group.querySelectorAll<HTMLElement>('.post-row')].some(r => r.style.display !== 'none');
+    group.style.display = visible ? '' : 'none';
+  });
+});
+</script>
+
+<style>
+.container { max-width: 740px; margin: 0 auto; padding: 60px 24px 100px; }
+.page-header { margin-bottom: 28px; }
+.page-title { font-size: clamp(26px, 5vw, 34px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 6px; }
+.page-sub { color: var(--muted); font-size: 13px; }
+.tag-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.filter-tag { background: var(--bg-card); border: 1px solid var(--border); color: var(--muted); padding: 5px 14px; border-radius: 20px; font-size: 11px; cursor: pointer; transition: all 0.15s; font-family: var(--font-mono); }
+.filter-tag:hover, .filter-tag.active { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.year-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.post-row { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--border); transition: all 0.15s; gap: 12px; }
+.post-row:hover { padding-left: 10px; }
+.post-row:hover .post-title { color: var(--accent); }
+.post-info { flex: 1; min-width: 0; }
+.post-title { font-size: 14px; color: var(--text); margin-bottom: 3px; transition: color 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.post-meta { font-size: 11px; color: var(--muted); font-family: var(--font-mono); display: flex; gap: 6px; }
+.post-badge { font-size: 10px; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; font-family: var(--font-mono); }
+.empty-state { padding: 60px 0; text-align: center; }
+</style>
