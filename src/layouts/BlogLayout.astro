@@ -1,0 +1,179 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: string;
+  tags?: string[];
+}
+
+const { title, description, date, tags = [] } = Astro.props;
+
+const formatted = date
+  ? new Date(date).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })
+  : undefined;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="article">
+    <div class="article-header fade-in-up">
+      <div class="article-meta">
+        {formatted && <time class="article-date">{formatted}</time>}
+        {tags.length > 0 && (
+          <div class="article-tags">
+            {tags.map(tag => <span class="article-tag">{tag}</span>)}
+          </div>
+        )}
+      </div>
+      <h1 class="article-title">{title}</h1>
+      {description && <p class="article-desc">{description}</p>}
+    </div>
+
+    <div class="article-body">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+}
+
+.article-header {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.article-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.article-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.article-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+}
+
+.article-title {
+  font-size: clamp(28px, 5vw, 42px);
+  margin-bottom: 12px;
+}
+
+.article-desc {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Prose styles */
+.article-body :global(h2) {
+  font-size: 22px;
+  margin: 48px 0 16px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+}
+
+.article-body :global(h3) {
+  font-size: 17px;
+  margin: 32px 0 12px;
+  color: var(--text);
+}
+
+.article-body :global(p) {
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  line-height: 1.85;
+}
+
+.article-body :global(ul), .article-body :global(ol) {
+  color: var(--text-secondary);
+  padding-left: 24px;
+  margin-bottom: 18px;
+}
+
+.article-body :global(li) { margin-bottom: 6px; }
+
+.article-body :global(code) {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.article-body :global(pre) {
+  background: rgba(10,10,10,0.8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+.article-body :global(pre code) {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-secondary);
+}
+
+.article-body :global(blockquote) {
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.article-body :global(a) {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-glow);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+
+.article-body :global(a:hover) {
+  text-decoration-color: var(--accent);
+}
+
+.article-body :global(img) {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+.article-body :global(hr) {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+</style>
