@@ -2,16 +2,569 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="BoYuan Lin"
+  description="軟體工程師 · 深度學習研究者。記錄技術筆記、論文閱讀與工程實踐。"
+>
   <div class="container">
-    <p class="tag fade-in-up">🚧 Under Construction</p>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-tag fade-in-up fade-in-up-1">Software Engineer · ML Researcher</div>
+        <h1 class="hero-name fade-in-up fade-in-up-2">
+          BoYuan Lin<span class="cursor"></span>
+        </h1>
+        <p class="hero-desc fade-in-up fade-in-up-3">
+          深度學習碩士，專注於
+          <span class="shimmer-text">軟體工程 × AI Agent × 通訊資料分析</span>。<br />
+          這裡記錄技術筆記、論文閱讀與偶爾的想法。
+        </p>
+        <div class="skill-tags fade-in-up fade-in-up-4">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">AI Agent</span>
+          <span class="skill-tag">ClickHouse</span>
+          <span class="skill-tag">O-RAN</span>
+          <span class="skill-tag">PyTorch</span>
+        </div>
+        <div class="hero-ctas fade-in-up fade-in-up-4">
+          <a href="/projects" class="btn-primary">查看作品集</a>
+          <a href="/blog" class="btn-secondary">閱讀文章 →</a>
+        </div>
+      </div>
+
+      <!-- AUTHOR CARD -->
+      <div class="author-card fade-in-up fade-in-up-3">
+        <div class="avatar-wrap">
+          <img src="/avatar.jpg" alt="BoYuan Lin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="avatar-fallback">BY</div>
+        </div>
+        <div class="author-name">BoYuan</div>
+        <div class="author-line"></div>
+        <div class="author-bio">
+          軟體工程師<br />
+          深度學習研究者<br />
+          偶爾寫筆記的人
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/IapetusYuan" class="social-btn" title="GitHub" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+          <a href="mailto:linsc1012@gmail.com" class="social-btn" title="Email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider fade-in-up" />
+
+    <!-- RECENT POSTS -->
+    <section class="section fade-in-up">
+      <div class="section-header">
+        <span class="section-label">最新文章</span>
+        <a href="/blog" class="see-all">全部文章 →</a>
+      </div>
+      <div class="posts">
+        <a href="/blog" class="post-item">
+          <div class="post-left">
+            <span class="post-num">01</span>
+            <div>
+              <div class="post-title">tmux 完整使用指南：從入門到效率工作流</div>
+              <div class="post-meta">Tools · 8 min · 2026-06</div>
+            </div>
+          </div>
+          <span class="post-badge">筆記</span>
+        </a>
+        <a href="/blog" class="post-item">
+          <div class="post-left">
+            <span class="post-num">02</span>
+            <div>
+              <div class="post-title">從零建立 AI Agent：工具鏈與架構設計</div>
+              <div class="post-meta">AI · 12 min · 2026-06</div>
+            </div>
+          </div>
+          <span class="post-badge">技術</span>
+        </a>
+        <a href="/blog" class="post-item">
+          <div class="post-left">
+            <span class="post-num">03</span>
+            <div>
+              <div class="post-title">通訊資料分析：DSP 基礎與 Python 實作</div>
+              <div class="post-meta">Data · 15 min · 2026-05</div>
+            </div>
+          </div>
+          <span class="post-badge">論文</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section class="section fade-in-up">
+      <div class="section-header">
+        <span class="section-label">精選作品</span>
+        <a href="/projects" class="see-all">全部作品 →</a>
+      </div>
+      <div class="project-grid">
+        <a href="/projects" class="project-card">
+          <div class="project-img">
+            <span class="project-img-label">O-RAN rApp 部署系統</span>
+            <span class="media-badge">IMG</span>
+          </div>
+          <div class="project-body">
+            <div class="project-name">Ericsson EIAP O-RAN rApp</div>
+            <div class="project-desc">CSAR 打包 + 離線部署，含 BDR OAuth2/STS/SigV4 認證鏈</div>
+            <div class="project-tags">
+              <span class="ptag">Python</span>
+              <span class="ptag">K8s</span>
+              <span class="ptag">O-RAN</span>
+            </div>
+          </div>
+        </a>
+        <a href="/projects" class="project-card">
+          <div class="project-img">
+            <span class="project-img-label">AI KPI 異常偵測</span>
+            <span class="media-badge">GIF</span>
+          </div>
+          <div class="project-body">
+            <div class="project-name">AI KPI Anomaly Detection</div>
+            <div class="project-desc">FastAPI + 本地 LLM (Gemma) + ClickHouse，網路優化團隊</div>
+            <div class="project-tags">
+              <span class="ptag">FastAPI</span>
+              <span class="ptag">LLM</span>
+              <span class="ptag">ClickHouse</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
   </div>
 </BaseLayout>
 
 <style>
 .container {
-  max-width: 860px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 100px 24px;
+  padding: 64px 24px 100px;
+}
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.hero-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  animation: aiTwinkle 2.4s ease-in-out infinite;
+}
+
+.hero-name {
+  font-size: clamp(32px, 6vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.82em;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 3px;
+  border-radius: 1px;
+  animation: blink 1.2s step-end infinite;
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 20px;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--muted) 0%,
+    var(--accent) 40%,
+    #fff 50%,
+    var(--accent) 60%,
+    var(--muted) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerFlow 3.6s linear infinite;
+  font-weight: 500;
+}
+
+@keyframes shimmerFlow {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 24px;
+}
+
+.skill-tag {
+  background: oklch(0.17 0.018 var(--hue));
+  border: 1px solid oklch(0.25 0.04 var(--hue));
+  color: oklch(0.70 0.10 var(--hue));
+  padding: 3px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  transition: all 0.15s;
+  cursor: default;
+}
+.skill-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #000;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.15s;
+  animation: pulsate 3s ease-in-out infinite;
+}
+.btn-primary:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-block;
+  color: var(--muted);
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* AUTHOR CARD */
+.author-card {
+  background: oklch(0.14 0.012 var(--hue));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  width: 175px;
+  flex-shrink: 0;
+  transition: border-color 0.3s;
+}
+.author-card:hover {
+  border-color: oklch(0.35 0.07 var(--hue));
+}
+
+.avatar-wrap {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  border: 2px solid oklch(0.30 0.06 var(--hue));
+  overflow: hidden;
+  position: relative;
+  animation: avatarFloat 4s ease-in-out infinite;
+  box-shadow: 0 0 0 4px oklch(0.18 0.03 var(--hue)), 0 0 20px var(--accent-glow);
+}
+
+@keyframes avatarFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, oklch(0.20 0.04 var(--hue)), oklch(0.12 0.015 var(--hue)));
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.author-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.author-line {
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  margin: 6px auto 10px;
+  border-radius: 2px;
+}
+
+.author-bio {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.social-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: oklch(0.20 0.02 var(--hue));
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.social-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: oklch(0.18 0.03 var(--hue));
+}
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 52px;
+}
+
+/* SECTIONS */
+.section { margin-bottom: 56px; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.see-all {
+  font-size: 12px;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.see-all:hover { color: var(--accent); }
+
+/* POSTS */
+.posts { display: flex; flex-direction: column; }
+
+.post-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.15s;
+}
+.post-item:hover { padding-left: 8px; }
+.post-item:hover .post-title { color: var(--accent); }
+
+.post-left {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.post-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  min-width: 22px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.post-title {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 2px;
+  transition: color 0.15s;
+}
+
+.post-meta {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.post-badge {
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 12px;
+  font-family: var(--font-mono);
+}
+
+/* PROJECTS */
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.project-card {
+  background: oklch(0.14 0.012 var(--hue));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  transition: all 0.3s;
+}
+.project-card:hover {
+  border-color: oklch(0.38 0.09 var(--hue));
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px oklch(0.70 0.18 var(--hue) / 0.10);
+}
+
+.project-img {
+  height: 110px;
+  background: oklch(0.11 0.012 var(--hue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.project-img-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.media-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent);
+  color: #000;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+.project-body { padding: 12px 14px; }
+
+.project-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.project-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.ptag {
+  font-size: 10px;
+  color: var(--muted);
+  background: oklch(0.19 0.015 var(--hue));
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .author-card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    padding: 16px;
+  }
+  .avatar-wrap { margin: 0; flex-shrink: 0; }
+  .author-line { margin: 4px 0; }
+  .project-grid { grid-template-columns: 1fr; }
 }
 </style>
